@@ -1,0 +1,191 @@
+﻿@model HospitalManagement.Models.PatientInvoices
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    @using (Html.BeginForm())
+    {
+        <br/><br/>
+        <h3 style="text-align: center">Labratory Diagonostic Center</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        @Html.HiddenFor(model => Model.Patient.id)
+                        <div class="row" style="height: 120px;border: 1px solid black; padding-left: 50px;">
+                            <div class="col-md-6">
+                                Bill No. :@Html.DisplayFor(model => Model.Patient.billId)
+                            </div>
+                            <div class="col-md-6">
+                                Invoice Date :@Html.DisplayFor(model => Model.Patient.invoiceDate)
+                            </div>
+                            <div class="col-md-6">
+                                Patient Name. :@Html.DisplayFor(model => Model.Patient.name)
+                            </div>
+                            <div class="col-md-6">
+                                Age :@Html.DisplayFor(model => Model.Patient.age)
+                            </div>
+                            <div class="col-md-6">
+                                Ref by. :
+                            </div>
+                            <div class="col-md-6">
+                                Gender :@Html.DisplayFor(model => Model.Patient.gender)
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>SI</th>
+                                    <th>Test Name</th>
+                                    <th>Result</th>
+                                    <th>Unit</th>
+                                    <th>Ref Reange</th>
+                                    <th>Update Test Result</th>
+                                </tr>
+                                </thead>
+                                @{ int serial = 1; }
+                                @foreach (var invoice in Model.Invoices)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td>@(serial++)</td>
+                                            <td>@invoice.testId</td>
+                                            <td>@invoice.testResult</td>
+                                            <td>@invoice.unit</td>
+                                            <td>@invoice.referenceRange</td>
+                                            <td class="text-right">
+                                                <div class="dropdown dropdown-action">
+                                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <div class="dropdown-item">@Html.ActionLink("Add test result", "Edit", new {id = invoice.id})</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            @*<td align=center>
+                                                <a href="#" data-toggle="modal" data-target="#invoiceModel" onclick="AddTestResults(' + invoice.id + ')"><span class="usrin glyphicon glyphicon-edit" title="Add Test result"> </span></a>
+                                            </td>*@
+                                            @*<td>@(serial++)</td>
+                                            <td>@Html.EditorForModel(invoice.testId)</td>
+                                            <td>@Html.EditorForModel(invoice.testRoom)</td>
+                                            <td>@Html.EditorForModel(invoice.price)</td>*@
+                                        </tr>
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+                        <div class="modal fade" id="invoiceModel">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                        <h4 id="ModalTitle"></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-horizontal disableform">
+                                                    <div class="form-group">
+                                                        <form id="form">
+                                                            <fieldset id="SubmitForm">
+                                                                @Html.HiddenFor(m => m.Invoice.id, new { @id = "id" });
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-xs-6 col-md-4">Test Id</label>
+                                                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                                                        @Html.TextBoxFor(m => m.Invoice.testId, new { @id = "testId", @class = "form-control", @placeholder = "Test Id*" })
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-xs-6 col-md-4">Test Result</label>
+                                                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                                                        @Html.TextBoxFor(m => m.Invoice.testResult, new { @id = "testResult", @class = "form-control", @placeholder = "Test Result*" })
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-xs-6 col-md-4">Test Unit</label>
+                                                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                                                        @Html.TextBoxFor(m => m.Invoice.unit, new { @id = "unit", @class = "form-control", @placeholder = "Test Unit*" })
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-xs-6 col-md-4">Reference Range</label>
+                                                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                                                        @Html.TextBoxFor(m => m.Invoice.referenceRange, new { @id = "referenceRange", @class = "form-control", @placeholder = "Reference Range*" })
+                                                                    </div>
+                                                                </div>
+                                                                @*<div class="form-group">
+                                                                    <a href="#" class="btn btn-block btn-danger" id="SaveStudentRecord">Save</a>
+                                                                </div>*@
+                                                            </fieldset>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    <button type="button" class="btn btn-success" id="actusr" data-dismiss="modal">Add</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
+
+                                        @*<form id="form">
+                                            <fieldset id="SubmitForm">
+                                                @Html.HiddenFor(m => m.Invoice.id, new { @id = "id" })
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(m => m.Invoice.testId, new { @id = "testId", @class = "form-control", @placeholder = "Test Id*" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(m => m.Invoice.testResult, new { @id = "testResult", @class = "form-control", @placeholder = "Test Result*" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(m => m.Invoice.unit, new { @id = "unit", @class = "form-control", @placeholder = "Test Unit*" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(m => m.Invoice.referenceRange, new { @id = "referenceRange", @class = "form-control", @placeholder = "Reference Range*" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <a href="#" class="btn btn-block btn-danger" id="SaveStudentRecord">Save</a>
+                                                </div>
+
+                                            </fieldset>
+                                        </form>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<script>
+    function AddTestResults(invoiceId) {
+        var url = "/LabReporter/GetInvoiceById?invoiceId=" + invoiceId;
+        $("#ModalTitle").html("Add test result");
+        $("#invoiceModel").modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $("#testId").val(obj.testId);
+                $("#testResult").val(obj.testResult);
+                $("#unit").val(obj.unit);
+                $("#referenceRange").val(obj.referenceRange);
+            }
+        })
+    }
+</script>
+
+
+@section AssetsLink{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+}

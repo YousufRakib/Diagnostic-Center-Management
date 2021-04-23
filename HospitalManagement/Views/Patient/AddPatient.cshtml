@@ -1,0 +1,1327 @@
+﻿@model HospitalManagement.Models.PatientViewModel
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="page-wrapper">
+        @using (Html.BeginForm())
+        {
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">Create Invoice</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form method="post">
+                        <div class="row">
+                            @Html.HiddenFor(model => model.id)
+                            @Html.HiddenFor(c => c.refId, Model.refId)
+                            @Html.HiddenFor(c => c.doctorName, Model.doctorName)
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Bill Id</label>
+                                    @Html.TextBoxFor(model => model.billId, new { @class = "form-control floating" })
+                                    @Html.ValidationMessageFor(c => c.billId)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Bed No.</label>
+                                    @Html.TextBoxFor(c => c.bedNo, Model.bedNo.ToString(), new { @class = "form-control floating" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-5">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    @Html.TextBoxFor(c => c.name, Model.name, new { @class = "form-control floating" })
+                                    @Html.ValidationMessageFor(c => c.name)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    @Html.DropDownList("gender", new List<SelectListItem>
+                                    {
+                                        new SelectListItem {Text = "Male", Value = "Male"},
+                                        new SelectListItem {Text = "Female", Value = "Female"}
+                                    }, "--- Select Gender---", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(c => c.gender)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input class="form-control" type="text" name="phone" value="@Model.phone" />
+                                    @Html.ValidationMessageFor(c => c.phone)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-5">
+                                <label>Age</label>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4">
+                                        @Html.DropDownList("age_Day", new List<SelectListItem>
+                                        {
+                                            new SelectListItem {Text = "1", Value = "1"},
+                                            new SelectListItem {Text = "2", Value = "2"},
+                                            new SelectListItem {Text = "3", Value = "3"},
+                                            new SelectListItem {Text = "4", Value = "4"},
+                                            new SelectListItem {Text = "5", Value = "5"},
+                                            new SelectListItem {Text = "6", Value = "6"},
+                                            new SelectListItem {Text = "7", Value = "7"},
+                                            new SelectListItem {Text = "8", Value = "8"},
+                                            new SelectListItem {Text = "9", Value = "9"},
+                                            new SelectListItem {Text = "10", Value = "10"},
+                                            new SelectListItem {Text = "11", Value = "11"},
+                                            new SelectListItem {Text = "12", Value = "12"},
+                                            new SelectListItem {Text = "13", Value = "13"},
+                                            new SelectListItem {Text = "14", Value = "14"},
+                                            new SelectListItem {Text = "15", Value = "15"},
+                                            new SelectListItem {Text = "16", Value = "16"},
+                                            new SelectListItem {Text = "17", Value = "17"},
+                                            new SelectListItem {Text = "18", Value = "18"},
+                                            new SelectListItem {Text = "19", Value = "19"},
+                                            new SelectListItem {Text = "20", Value = "20"},
+                                            new SelectListItem {Text = "21", Value = "21"},
+                                            new SelectListItem {Text = "22", Value = "22"},
+                                            new SelectListItem {Text = "23", Value = "23"},
+                                            new SelectListItem {Text = "24", Value = "24"},
+                                            new SelectListItem {Text = "25", Value = "25"},
+                                            new SelectListItem {Text = "26", Value = "26"},
+                                            new SelectListItem {Text = "27", Value = "27"},
+                                            new SelectListItem {Text = "28", Value = "28"},
+                                            new SelectListItem {Text = "29", Value = "29"},
+                                            new SelectListItem {Text = "30", Value = "30"},
+                                            new SelectListItem {Text = "31", Value = "31"},
+                                        },"DD", new {@class = "form-control"})
+                                        @Html.ValidationMessageFor(c => c.age_Day)
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        @Html.DropDownList("age_Month", new List<SelectListItem>
+                                        {
+                                            new SelectListItem {Text = "1", Value = "1"},
+                                            new SelectListItem {Text = "2", Value = "2"},
+                                            new SelectListItem {Text = "3", Value = "3"},
+                                            new SelectListItem {Text = "4", Value = "4"},
+                                            new SelectListItem {Text = "5", Value = "5"},
+                                            new SelectListItem {Text = "6", Value = "6"},
+                                            new SelectListItem {Text = "7", Value = "7"},
+                                            new SelectListItem {Text = "8", Value = "8"},
+                                            new SelectListItem {Text = "9", Value = "9"},
+                                            new SelectListItem {Text = "10", Value = "10"},
+                                            new SelectListItem {Text = "11", Value = "11"},
+                                            new SelectListItem {Text = "12", Value = "12"},
+                                        },"MM", new {@class = "form-control"})
+                                        @Html.ValidationMessageFor(c => c.age_Month)
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        @Html.DropDownList("age_Year", new List<SelectListItem>
+                                        {
+                                            new SelectListItem {Text = "1", Value = "1"},
+                                            new SelectListItem {Text = "2", Value = "2"},
+                                            new SelectListItem {Text = "3", Value = "3"},
+                                            new SelectListItem {Text = "4", Value = "4"},
+                                            new SelectListItem {Text = "5", Value = "5"},
+                                            new SelectListItem {Text = "6", Value = "6"},
+                                            new SelectListItem {Text = "7", Value = "7"},
+                                            new SelectListItem {Text = "8", Value = "8"},
+                                            new SelectListItem {Text = "9", Value = "9"},
+                                            new SelectListItem {Text = "10", Value = "10"},
+                                            new SelectListItem {Text = "11", Value = "11"},
+                                            new SelectListItem {Text = "12", Value = "12"},
+                                            new SelectListItem {Text = "13", Value = "13"},
+                                            new SelectListItem {Text = "14", Value = "14"},
+                                            new SelectListItem {Text = "15", Value = "15"},
+                                            new SelectListItem {Text = "16", Value = "16"},
+                                            new SelectListItem {Text = "17", Value = "17"},
+                                            new SelectListItem {Text = "18", Value = "18"},
+                                            new SelectListItem {Text = "19", Value = "19"},
+                                            new SelectListItem {Text = "20", Value = "20"},
+                                            new SelectListItem {Text = "21", Value = "21"},
+                                            new SelectListItem {Text = "22", Value = "22"},
+                                            new SelectListItem {Text = "23", Value = "23"},
+                                            new SelectListItem {Text = "24", Value = "24"},
+                                            new SelectListItem {Text = "25", Value = "25"},
+                                            new SelectListItem {Text = "26", Value = "26"},
+                                            new SelectListItem {Text = "27", Value = "27"},
+                                            new SelectListItem {Text = "28", Value = "28"},
+                                            new SelectListItem {Text = "29", Value = "29"},
+                                            new SelectListItem {Text = "30", Value = "30"},
+                                            new SelectListItem {Text = "31", Value = "31"},
+                                            new SelectListItem {Text = "32", Value = "32"},
+                                            new SelectListItem {Text = "33", Value = "33"},
+                                            new SelectListItem {Text = "34", Value = "34"},
+                                            new SelectListItem {Text = "35", Value = "35"},
+                                            new SelectListItem {Text = "36", Value = "36"},
+                                            new SelectListItem {Text = "37", Value = "37"},
+                                            new SelectListItem {Text = "38", Value = "38"},
+                                            new SelectListItem {Text = "39", Value = "39"},
+                                            new SelectListItem {Text = "40", Value = "40"},
+                                            new SelectListItem {Text = "41", Value = "41"},
+                                            new SelectListItem {Text = "42", Value = "42"},
+                                            new SelectListItem {Text = "43", Value = "43"},
+                                            new SelectListItem {Text = "44", Value = "44"},
+                                            new SelectListItem {Text = "45", Value = "45"},
+                                            new SelectListItem {Text = "46", Value = "46"},
+                                            new SelectListItem {Text = "47", Value = "47"},
+                                            new SelectListItem {Text = "48", Value = "48"},
+                                            new SelectListItem {Text = "49", Value = "49"},
+                                            new SelectListItem {Text = "50", Value = "50"},
+                                            new SelectListItem {Text = "51", Value = "51"},
+                                            new SelectListItem {Text = "52", Value = "52"},
+                                            new SelectListItem {Text = "53", Value = "53"},
+                                            new SelectListItem {Text = "54", Value = "54"},
+                                            new SelectListItem {Text = "55", Value = "55"},
+                                            new SelectListItem {Text = "56", Value = "56"},
+                                            new SelectListItem {Text = "57", Value = "57"},
+                                            new SelectListItem {Text = "58", Value = "58"},
+                                            new SelectListItem {Text = "59", Value = "59"},
+                                            new SelectListItem {Text = "60", Value = "60"},
+                                            new SelectListItem {Text = "61", Value = "61"},
+                                            new SelectListItem {Text = "62", Value = "62"},
+                                            new SelectListItem {Text = "63", Value = "63"},
+                                            new SelectListItem {Text = "64", Value = "64"},
+                                            new SelectListItem {Text = "65", Value = "65"},
+                                            new SelectListItem {Text = "66", Value = "66"},
+                                            new SelectListItem {Text = "67", Value = "67"},
+                                            new SelectListItem {Text = "68", Value = "68"},
+                                            new SelectListItem {Text = "69", Value = "69"},
+                                            new SelectListItem {Text = "60", Value = "70"},
+                                            new SelectListItem {Text = "71", Value = "71"},
+                                            new SelectListItem {Text = "72", Value = "72"},
+                                            new SelectListItem {Text = "73", Value = "73"},
+                                            new SelectListItem {Text = "74", Value = "74"},
+                                            new SelectListItem {Text = "75", Value = "75"},
+                                            new SelectListItem {Text = "76", Value = "76"},
+                                            new SelectListItem {Text = "77", Value = "77"},
+                                            new SelectListItem {Text = "78", Value = "78"},
+                                            new SelectListItem {Text = "79", Value = "79"},
+                                            new SelectListItem {Text = "80", Value = "80"},
+                                            new SelectListItem {Text = "81", Value = "81"},
+                                            new SelectListItem {Text = "82", Value = "82"},
+                                            new SelectListItem {Text = "83", Value = "83"},
+                                            new SelectListItem {Text = "84", Value = "84"},
+                                            new SelectListItem {Text = "85", Value = "85"},
+                                            new SelectListItem {Text = "86", Value = "86"},
+                                            new SelectListItem {Text = "87", Value = "87"},
+                                            new SelectListItem {Text = "88", Value = "88"},
+                                            new SelectListItem {Text = "89", Value = "89"},
+                                            new SelectListItem {Text = "90", Value = "90"},
+                                            new SelectListItem {Text = "91", Value = "91"},
+                                            new SelectListItem {Text = "92", Value = "92"},
+                                            new SelectListItem {Text = "93", Value = "93"},
+                                            new SelectListItem {Text = "94", Value = "94"},
+                                            new SelectListItem {Text = "95", Value = "95"},
+                                            new SelectListItem {Text = "96", Value = "96"},
+                                            new SelectListItem {Text = "97", Value = "97"},
+                                            new SelectListItem {Text = "98", Value = "98"},
+                                            new SelectListItem {Text = "99", Value = "99"},
+                                            new SelectListItem {Text = "100", Value = "100"},
+                                            new SelectListItem {Text = "101", Value = "101"},
+                                            new SelectListItem {Text = "102", Value = "102"},
+                                            new SelectListItem {Text = "103", Value = "103"},
+                                            new SelectListItem {Text = "104", Value = "104"},
+                                            new SelectListItem {Text = "105", Value = "105"},
+                                            new SelectListItem {Text = "106", Value = "106"},
+                                            new SelectListItem {Text = "107", Value = "107"},
+                                            new SelectListItem {Text = "108", Value = "108"},
+                                            new SelectListItem {Text = "109", Value = "109"},
+                                            new SelectListItem {Text = "110", Value = "110"},
+                                            new SelectListItem {Text = "111", Value = "111"},
+                                            new SelectListItem {Text = "112", Value = "112"},
+                                            new SelectListItem {Text = "113", Value = "113"},
+                                            new SelectListItem {Text = "114", Value = "114"},
+                                            new SelectListItem {Text = "115", Value = "115"},
+                                            new SelectListItem {Text = "116", Value = "116"},
+                                            new SelectListItem {Text = "117", Value = "117"},
+                                            new SelectListItem {Text = "118", Value = "118"},
+                                            new SelectListItem {Text = "119", Value = "119"},
+                                            new SelectListItem {Text = "120", Value = "120"},
+                                            new SelectListItem {Text = "121", Value = "121"},
+                                            new SelectListItem {Text = "122", Value = "122"},
+                                            new SelectListItem {Text = "123", Value = "123"},
+                                            new SelectListItem {Text = "124", Value = "124"},
+                                            new SelectListItem {Text = "125", Value = "125"},
+                                            new SelectListItem {Text = "126", Value = "126"},
+                                            new SelectListItem {Text = "127", Value = "127"},
+                                            new SelectListItem {Text = "128", Value = "128"},
+                                            new SelectListItem {Text = "129", Value = "129"},
+                                            new SelectListItem {Text = "130", Value = "130"}
+                                        },"YYYY", new {@class = "form-control"})
+                                        @Html.ValidationMessageFor(c => c.age_Year)
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <label>Doctor Name</label>
+                                @Html.DropDownListFor(c => c.DoctorId, Model.DoctorSelectListItems, "--Select Doctor--", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-8">
+                            <div class="form-group">
+                                <label>Doctor Info</label>
+                                @Html.TextBoxFor(c => c.info, Model.info, new { @class = "form-control floating" })
+                            </div>
+                        </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                <div class="table-responsive">
+                                    @*<table class="table table-hover table-white" id="test_Table">
+                                        <thead>
+                                        <tr>
+                                            <th class="col-sm-2">Test</th>
+                                            <th style="width:100px;">Unit Cost</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr id="mainrow">
+                                            <td>
+                                                @Html.DropDownListFor(c => c.TestId, Model.TestSelectListItems, "--Select Test--", new {@class = "form-control",id="TestId"})
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(c => c.price, Model.price.ToString(), new {@class = "form-control floating", id = "price", style = "min-width:150px"})
+                                            </td>
+                                            <td>
+                                                <input type="button" id="add" value="add" style="width:80px" class="btn btn-success"/>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>*@
+                                    
+
+                                    <table class="table table-hover table-white" id="test_Table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-sm-2">Test</th>
+                                                    <th style="width:100px;">Unit Cost</th>
+                                                    <th><a href="javascript:void(0);" id="addMore" title="Add More Test"><i class="fa fa-plus" style="font-size:24px;color:green"></i></a></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DropDownListFor(c => c.TestId, Model.TestSelectListItems, "--Select Test--", new { @class = "form-control",id="testId1" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(c => c.price, Model.price.ToString(), new {@class = "form-control floating", style = "min-width:150px",id="price1", @readonly = "readonly" })
+                                                        @*@Html.HiddenFor(c => c.price, Model.price.ToString(), new { @class = "form-control floating", style = "min-width:150px", id = "price1", @readonly = "readonly" })*@
+                                                        <input class="form-control" type="hidden" step="any" id="unit" name="unit" readonly style="width:168px" value="@Model.unit" />
+                                                    </td>
+                                                    <td class="delete_row">
+                                                        <a href='javascript:void(0);' class='remove' ><i class="fa fa-minus" style="font-size:24px;color:red"></i></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DropDownListFor(c => c.TestId, Model.TestSelectListItems, "--Select Test--", new { @class = "form-control",id = "testId2" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(c => c.price, Model.price.ToString(), new { @class = "form-control floating", style = "min-width:150px" , id = "price2", @readonly = "readonly" })
+                                                    </td>
+                                                    <td class="delete_row">
+                                                        @*<a href='javascript:void(0);' class='remove' type="hidden"><i class="fa fa-minus" style="font-size:24px;color:red"></i></a>*@
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DropDownListFor(c => c.TestId, Model.TestSelectListItems, "--Select Test--", new { @class = "form-control" , id = "testId3" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(c => c.price, Model.price.ToString(), new { @class = "form-control floating", style = "min-width:150px",id = "price3", @readonly = "readonly" })
+                                                    </td>
+                                                    <td class="delete_row">
+                                                        @*<a href='javascript:void(0);' class='remove' type="hidden"><i class="fa fa-minus" style="font-size:24px;color:red"></i></a>*@
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DropDownListFor(c => c.TestId, Model.TestSelectListItems, "--Select Test--", new { @class = "form-control", id = "testId4" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(c => c.price, Model.price.ToString(), new { @class = "form-control floating", style = "min-width:150px", id = "price4", @readonly = "readonly" })
+                                                    </td>
+                                                    <td class="delete_row">
+                                                        @*<a href='javascript:void(0);' class='remove' type="hidden"><i class="fa fa-minus" style="font-size:24px;color:red"></i></a>*@
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DropDownListFor(c => c.TestId, Model.TestSelectListItems, "--Select Test--", new { @class = "form-control", id = "testId5" })
+                                                        @*@Html.DropDownListFor(c => c.TestId, Model.TestSelectListItems, "--Select Test--", new {@class = "form-control", id = "testId5"})*@
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(c => c.price, Model.price.ToString(), new { @class = "form-control floating", style = "min-width:150px", id = "price5", @readonly = "readonly" })
+                                                    </td>
+                                                    <td class="delete_row">
+                                                        @*<a href='javascript:void(0);' class='remove' type="hidden"><i class="fa fa-minus" style="font-size:24px;color:red"></i></a>*@
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DropDownListFor(c => c.TestId, Model.TestSelectListItems, "--Select Test--", new { @class = "form-control", id = "testId6" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(c => c.price, Model.price.ToString(), new { @class = "form-control floating", style = "min-width:150px", id = "price6", @readonly = "readonly" })
+                                                    </td>
+                                                    <td class="delete_row">
+                                                        @*<a href='javascript:void(0);' class='remove' type="hidden"><i class="fa fa-minus" style="font-size:24px;color:red"></i></a>*@
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @*<div id="table-responsive">
+                                        <table class="table table-hover table-white" id="invoiceDetails">
+
+                                        </table>
+                                    </div>*@
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-white">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Test Room No.
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                                <div class="form-group">
+                                                                    @*<input class="form-control" type="number" id = "testRoom", style = "min-width:150px"/>*@
+                                                                    @Html.TextBoxFor(c => c.testRoom, Model.testRoom, new {@class = "form-control floating", id = "testRoom", style = "min-width:150px"})
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Delivery Date
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                                <div class="form-group">
+                                                                    @Html.TextBoxFor(model => model.deliveryDate, new { @class = "form-control floating", id = "deliveryDate" })
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Delivery Time
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                                <div class="form-group">
+                                                                    @Html.TextBoxFor(c => c.deliveryTime, Model.deliveryTime, new { @class = "form-control floating", @Value="3 PM"})
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Prepare By
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                                <div class="form-group">
+                                                                    <input class="form-control floating" type="text" step="any" readonly id="paymentBy" name="paymentBy" value="@Session["employeeName"]" />
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-white">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Sub Total
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
+                                                                <input class="form-control" readonly style="width:168px" step="any" name="subTotalPrice" type="number" id="subTotalPrice" value="@Model.subTotal">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Discount %
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                                <input class="form-control" style="width:168px" name="discount" type="number" id="discount" value="@Model.discount">
+                                                                <input class="form-control" type="hidden" step="any" id="grandTotal" readonly style="width:168px" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Deduct Ammount
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                                <input class="form-control" style="width:168px" step="any" name="deductAmmount" type="number" id="deductAmmount" value="@Model.deductAmmount">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Grand Total
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
+                                                                <input class="form-control" type="number" step="any" name="totalAmmount" id="grandTotalPrice" readonly style="width:168px" value="@Model.totalAmmount" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Paid
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                                <input class="form-control" style="width:168px" type="text" name="paidAmmount" id="paidAmmount" value="@Model.paidAmmount">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align: right; font-weight: bold">
+                                                                Due
+                                                            </td>
+                                                            <td style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
+                                                                <input class="form-control form-amt" type="number" step="any" name="dueAmmount" id="dueAmmount" style="width:168px" value="@Model.dueAmmount" />
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Remark</label>
+                                            <textarea class="form-control" id="remark" name="remark" value="@Model.remark"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center m-t-20">
+                                <input class="btn btn-primary submit-btn" type="submit" value="Save" />
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-focus">
+                                    @if (ViewBag.Message != null)
+                                    {
+                                        <h3>
+                                            <b>
+                                                @ViewBag.Message;
+                                            </b>
+                                        </h3>
+                                    }
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section MyScript{
+    @*<script>
+        $(document).ready(function () {
+            $('#add').click(function () {
+                var $newRow = $('#mainrow').clone().removeAttr('id');
+                $('.form-control', $newRow).val($('#TestId').val());
+                $('.form-control', $newRow).val($('#price').val());
+
+                //Replace add button with remove button
+                $('#add', $newRow).addClass('remove').val('Remove').removeClass('btn-success').addClass('btn-danger');
+
+                //remove id attribute from new clone row
+                $('#TestId,#price,#add', $newRow).removeAttr('id');
+                //append clone row
+                $('#invoiceDetails').append($newRow);
+
+                //clear select data
+                $('#TestId').val('0');
+                $('#price').val('');
+            })
+            //remove button click event
+            $('#invoiceDetails').on('click', '.remove', function () {
+                $(this).parents('tr').remove();
+            });
+        });
+    </script>*@
+
+    <script>
+        $("#DoctorId").change(function() {
+            var doctor = $("#DoctorId").val();
+            var jsonrequestData = { doctorId: doctor };
+            $.ajax({
+                url: "/Patient/GetDoctorInfoByDoctorName",
+                type: "POST",
+                data: jsonrequestData,
+                success: function(info) {
+                    $("#info").empty();
+                    $.each(info,
+                        function(key, value) {
+                            $("#info").val(value.info);
+                        });
+                },
+                error: function() {
+                    alert("not done");
+                }
+            });
+            $.ajax({
+                url: "/Patient/GetDoctorRefIdByDoctorName",
+                type: "POST",
+                data: jsonrequestData,
+                success: function(refId) {
+                    $("#refId").empty();
+                    $.each(refId,
+                        function(key, value) {
+                            $("#refId").val(value.refId);
+                        });
+                },
+                error: function() {
+                    alert("not done");
+                }
+            });
+            $.ajax({
+                url: "/Patient/GetDoctorNameByDoctorName",
+                type: "POST",
+                data: jsonrequestData,
+                success: function(doctorName) {
+                    $("#doctorName").empty();
+                    $.each(doctorName,
+                        function(key, value) {
+                            $("#doctorName").val(value.doctorName);
+                        });
+                },
+                error: function() {
+                    alert("not done");
+                }
+            });
+        });
+    </script>
+    @*<script>
+        var textField = 6;
+        $(function () {
+
+            $('#addMore').on('click',
+                function() {
+                    var data = $("#test_Table tr:eq(1)").clone(true).appendTo("#test_Table");
+
+                    data.find("input").val('');
+                    textField=textFiled +1;
+                });
+            $(document).on('click',
+                '.remove',
+                function() {
+                    var trIndex = $(this).closest("tr").index();
+                    if (trIndex > 0) {
+                        $(this).closest("tr").remove();
+
+                        textField = textField - 1;
+                    } else {
+                        alert("Sorry!! Can't remove first row!");
+                    }
+                });
+        });
+    </script>*@
+
+    <script>
+        var subTotal = 0;
+        var price1 = 0;
+        var price2 = 0;
+        var price3 = 0;
+        var price4 = 0;
+        var price5 = 0;
+        var price6 = 0;
+        var deliverydays=0;
+        var price;
+        var textField = 6;
+        var testRooms="";
+        $(function() {
+            $('#addMore').on('click',
+                function() {
+                    var data = $("#test_Table tr:eq(1)").clone(true).appendTo("#test_Table");
+                    data.find("input").val('');
+                    textField = textFiled + 1;
+                    debugger;
+                    //var i=0;
+                    //$('#td').each(function () {
+                    //    debugger;
+                    ////    i++;
+                    //    var newID='test'+textField;
+                    //    $(this).attr('id',newID);
+                    // //   $(this).val(i);
+                    //});
+                    var option = document.createElement("td");
+                    option.setAttribute('id', test+textField);
+
+                });
+
+        });
+        $(document).on('click',
+            '.remove',
+            function() {
+                var trIndex = $(this).closest("tr").index();
+                if (trIndex > 0) {
+                    $(this).closest("tr").remove();
+
+
+                    textField = textField - 1;
+                } else {
+                    alert("Sorry!! Can't remove first row!");
+                }
+            });
+   
+     //   });
+        $(document).ready(function() {
+            $("#testId1").change(function() {
+                var test = $("#testId1").val();
+                var jsonrequestData = { testId: test };
+                $.ajax({
+                    //url: "/Patient/GetTestPriceByTestName",
+                    url: "@Url.Action("GetTestPriceByTestName", "Patient")",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(testPrice) {
+                        $("#price1").empty();
+                        $.each(testPrice,
+                            function(key, value) {
+                                $("#price1").val(value.price);
+                                price1 = value.price;
+                                subTotal = price1 + price2 + price3 + price4 + price5 + price6;
+                                $("#subTotalPrice").val(subTotal);
+                                $("#grandTotalPrice").val(subTotal);
+                                $("#dueAmmount").val(subTotal);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetTestRoomByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(Room) {
+                        $("#testRoom").empty();
+                        $.each(Room,
+                            function (key, value) {
+                                var testRoom = value.testRoom;
+                                //for (var i = 0; i <= testRooms.length; i++) {
+                                //    if (testRooms[i] != testRoom) {
+                                //        testRooms.push(testRoom);
+                                //    }
+                                //}
+                                testRooms = testRooms + testRoom;
+                                $("#testRoom").val(testRooms);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+                $.ajax({
+                    url: "/Patient/GetUnitByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function (testUnit) {
+                        $("#testRoom").empty();
+                        $.each(testUnit,
+                            function (key, value) {
+                                var testRoom = value.testRoom;
+                                //for (var i = 0; i <= testRooms.length; i++) {
+                                //    if (testRooms[i] != testRoom) {
+                                //        testRooms.push(testRoom);
+                                //    }
+                                //}
+                                testRooms = testRooms + testRoom;
+                                $("#testRoom").val(testRooms);
+                            });
+                    },
+                    error: function () {
+                        alert("not done");
+                    }
+                });
+                $.ajax({
+                    url: "/Patient/GetDeliveryDaysByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(deliveryday) {
+                        $("#deliveryDate").empty();
+                        $.each(deliveryday,
+                            function (key, value) {
+                                var deliveryday12=value.deliveryDays;
+                                if (deliveryday12 > deliverydays) {
+                                    deliverydays = deliveryday12;
+                                }                                    
+                                var date = new Date();
+                                date.setDate(date.getDate() + (+deliverydays));
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                var dateFormat = day + '-' + month + '-' + year;
+                                $("#deliveryDate").val(dateFormat);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $("#testId2").change(function() {
+                var test = $("#testId2").val();
+                var jsonrequestData = { testId: test };
+
+                $.ajax({
+                    //url: "/Patient/GetTestPriceByTestName",
+                    url: "@Url.Action("GetTestPriceByTestName", "Patient")",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(testPrice) {
+                        $("#price2").empty();
+                        $.each(testPrice,
+                            function(key, value) {
+                                $("#price2").val(value.price);
+                                price2 = value.price;
+                                //subTotal = price1 + price2;
+                                subTotal = price1 + price2 + price3 + price4 + price5 + price6;
+                                $("#subTotalPrice").val(subTotal);
+                                $("#grandTotalPrice").val(subTotal);
+                                $("#dueAmmount").val(subTotal);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetTestRoomByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(Room) {
+                        $("#testRoom").empty();
+                        $.each(Room,
+                            function (key, value) {
+                                var testRoom = value.testRoom;
+                                //for (var i = 0; i <= testRooms.length; i++) {
+                                //    if (testRooms[i] != testRoom) {
+                                //        testRooms.push(testRoom);
+                                //    }
+                                //}
+                                //testRooms = testRooms + testRoom;
+                                //$("#testRoom").val(testRooms);
+                                testRooms = testRooms + ',' + testRoom;
+                                $("#testRoom").val(testRooms);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetDeliveryDaysByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(deliveryday) {
+                        $("#deliveryDate").empty();
+                        $.each(deliveryday,
+                            function (key, value) {
+                                var deliveryday12 = value.deliveryDays;
+                                if (deliveryday12 > deliverydays) {
+                                    deliverydays = deliveryday12;
+                                }
+                                var date = new Date();
+                                date.setDate(date.getDate() + (+deliverydays));
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                var dateFormat = day + '-' + month + '-' + year;
+                                $("#deliveryDate").val(dateFormat);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $("#testId3").change(function() {
+                var test = $("#testId3").val();
+                var jsonrequestData = { testId: test };
+
+                $.ajax({
+                    //url: "/Patient/GetTestPriceByTestName",
+                    url: "@Url.Action("GetTestPriceByTestName", "Patient")",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(testPrice) {
+                        $("#price3").empty();
+                        $.each(testPrice,
+                            function(key, value) {
+                                $("#price3").val(value.price);
+                                price3 = value.price;
+                                //subTotal = price1 + price2;
+                                subTotal = price1 + price2 + price3 + price4 + price5 + price6;
+                                $("#subTotalPrice").val(subTotal);
+                                $("#grandTotalPrice").val(subTotal);
+                                $("#dueAmmount").val(subTotal);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetTestRoomByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(Room) {
+                        $("#testRoom").empty();
+                        $.each(Room,
+                            function(key, value) {
+                                var testRoom = value.testRoom;
+                                //for (var i = 0; i <= testRooms.length; i++) {
+                                //    if (testRooms[i] != testRoom) {
+                                //        testRooms.push(testRoom);
+                                //    }
+                                //}
+                                //testRooms = testRooms + testRoom;
+                                //$("#testRoom").val(testRooms);
+                                testRooms = testRooms + ',' + testRoom;
+                                $("#testRoom").val(testRooms);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetDeliveryDaysByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(deliveryday) {
+                        $("#deliveryDate").empty();
+                        $.each(deliveryday,
+                            function (key, value) {
+                                var deliveryday12 = value.deliveryDays;
+                                if (deliveryday12 > deliverydays) {
+                                    deliverydays = deliveryday12;
+                                }
+                                var date = new Date();
+                                date.setDate(date.getDate() + (+deliverydays));
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                var dateFormat = day + '-' + month + '-' + year;
+                                $("#deliveryDate").val(dateFormat);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $("#testId4").change(function() {
+                var test = $("#testId4").val();
+                var jsonrequestData = { testId: test };
+
+                $.ajax({
+                    //url: "/Patient/GetTestPriceByTestName",
+                    url: "@Url.Action("GetTestPriceByTestName", "Patient")",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(testPrice) {
+                        $("#price4").empty();
+                        $.each(testPrice,
+                            function(key, value) {
+                                $("#price4").val(value.price);
+                                price4 = value.price;
+                                //subTotal = price1 + price2;
+                                subTotal = price1 + price2 + price3 + price4 + price5 + price6;
+                                $("#subTotalPrice").val(subTotal);
+                                $("#grandTotalPrice").val(subTotal);
+                                $("#dueAmmount").val(subTotal);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetTestRoomByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(Room) {
+                        $("#testRoom").empty();
+                        $.each(Room,
+                            function(key, value) {
+                                var testRoom = value.testRoom;
+                                for (var i = 0; i <= testRooms.length; i++) {
+                                    if (testRooms[i] != testRoom) {
+                                        testRooms.push(testRoom);
+                                    }
+                                }
+                                //testRooms = testRooms + testRoom;
+                                $("#testRoom").val(testRooms);
+                                //testRooms = testRooms + ',' + testRoom;
+                                //$("#testRoom").val(testRooms);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetDeliveryDaysByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(deliveryday) {
+                        $("#deliveryDate").empty();
+                        $.each(deliveryday,
+                            function (key, value) {
+                                var deliveryday12 = value.deliveryDays;
+                                if (deliveryday12 > deliverydays) {
+                                    deliverydays = deliveryday12;
+                                }
+                                var date = new Date();
+                                date.setDate(date.getDate() + (+deliverydays));
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                var dateFormat = day + '-' + month + '-' + year;
+                                $("#deliveryDate").val(dateFormat);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $("#testId5").change(function () {
+                var test = $("#testId5").val();
+                var jsonrequestData = { testId: test };
+
+                $.ajax({
+                    //url: "/Patient/GetTestPriceByTestName",
+                    url: "@Url.Action("GetTestPriceByTestName", "Patient")",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(testPrice) {
+                        $("#price5").empty();
+                        $.each(testPrice,
+                            function(key, value) {
+                                $("#price5").val(value.price);
+                                price5 = value.price;
+                                //subTotal = price1 + price2;
+                                subTotal = price1 + price2 + price3 + price4 + price5 + price6;
+                                $("#subTotalPrice").val(subTotal);
+                                $("#grandTotalPrice").val(subTotal);
+                                $("#dueAmmount").val(subTotal);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetTestRoomByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(Room) {
+                        $("#testRoom").empty();
+                        $.each(Room,
+                            function(key, value) {
+                                var testRoom = value.testRoom;
+                                testRooms = testRooms + ',' + testRoom;
+                                $("#testRoom").val(testRooms);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+                $.ajax({
+                    url: "/Patient/GetDeliveryDaysByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function (deliveryday) {
+                        $("#deliveryDate").empty();
+                        $.each(deliveryday,
+                            function (key, value) {
+                                var deliveryday12 = value.deliveryDays;
+                                if (deliveryday12 > deliverydays) {
+                                    deliverydays = deliveryday12;
+                                }
+                                var date = new Date();
+                                date.setDate(date.getDate() + (+deliverydays));
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                var dateFormat = day + '-' + month + '-' + year;
+                                $("#deliveryDate").val(dateFormat);
+                            });
+                    },
+                    error: function () {
+                        alert("not done");
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+            $("#testId6").change(function() {
+                var test = $("#testId6").val();
+                var jsonrequestData = { testId: test };
+
+                $.ajax({
+                    //url: "/Patient/GetTestPriceByTestName",
+                    url: "@Url.Action("GetTestPriceByTestName", "Patient")",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(testPrice) {
+                        $("#price6").empty();
+                        $.each(testPrice,
+                            function(key, value) {
+                                $("#price6").val(value.price);
+                                price6 = value.price;
+                                //subTotal = price1 + price2;
+                                subTotal = price1 + price2 + price3 + price4 + price5 + price6;
+                                $("#subTotalPrice").val(subTotal);
+                                $("#grandTotalPrice").val(subTotal);
+                                $("#dueAmmount").val(subTotal);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetTestRoomByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(Room) {
+                        $("#testRoom").empty();
+                        $.each(Room,
+                            function(key, value) {
+                                var testRoom = value.testRoom;
+                                testRooms = testRooms + ',' + testRoom;
+                                $("#testRoom").val(testRooms);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetDeliveryDaysByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(deliveryday) {
+                        $("#deliveryDate").empty();
+                        $.each(deliveryday,
+                            function (key, value) {
+                                var deliveryday12 = value.deliveryDays;
+                                if (deliveryday12 > deliverydays) {
+                                    deliverydays = deliveryday12;
+                                }
+                                var date = new Date();
+                                date.setDate(date.getDate() + (+deliverydays));
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                var dateFormat = day + '-' + month + '-' + year;
+                                $("#deliveryDate").val(dateFormat);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+            });
+        });
+    </script>
+
+    @*<script>
+        $(document).ready(function() {
+            $("#testId2").change(function() {
+                var test = $("#testId2").val();
+                var subTotal = 0;
+                var grandTotal = 0;
+                var dueAmmount = 0;
+                var jsonrequestData = { testId: test };
+
+
+                $.ajax({
+                    //url: "/Patient/GetTestPriceByTestName",
+                    url: "@Url.Action("GetTestPriceByTestName", "Patient")",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(testPrice) {
+                        $("#price2").empty();
+                        $.each(testPrice,
+                            function(key, value) {
+                                $("#price2").val(value.price);
+                                subTotal = $("#price2").val();
+                                grandTotal = $("#price2").val();
+                                dueAmmount = $("#price2").val();
+                                $("#subTotalPrice").val(subTotal);
+                                $("#grandTotalPrice").val(grandTotal);
+                                $("#dueAmmount").val(dueAmmount);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetTestRoomByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(Room) {
+                        $("#testRoom").empty();
+                        $.each(Room,
+                            function(key, value) {
+                                $("#testRoom").val(value.testRoom);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+
+                $.ajax({
+                    url: "/Patient/GetDeliveryDaysByTestName",
+                    type: "POST",
+                    data: jsonrequestData,
+                    success: function(deliveryday) {
+                        $("#deliveryDate").empty();
+                        $.each(deliveryday,
+                            function(key, value) {
+                                var date = new Date();
+                                date.setDate(date.getDate() + (+value.deliveryDays));
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                var dateFormat = day + '-' + month + '-' + year;
+                                $("#deliveryDate").val(dateFormat);
+                            });
+                    },
+                    error: function() {
+                        alert("not done");
+                    }
+                });
+            });
+        });
+    </script>*@
+
+    <script>
+        //calculate total price
+
+        $(document).ready(function() {
+            var deductAmmount = 0;
+            var subtotal = 0;
+            var grandTotal = 0;
+            var grandTotalPrice = 0
+
+            $("#discount").keyup(function() {
+                if (!IsNullOrEmpty($("#discount").val())) {
+                    discount = $("#discount").val();
+
+                    if (!IsNullOrEmpty($("#subTotalPrice").val())) {
+                        subtotal = $("#subTotalPrice").val();
+                    }
+                    if (!IsNullOrEmpty($("#deductAmmount").val())) {
+                        deductAmmount = $("#deductAmmount").val();
+
+                        grandTotal = subtotal - ((discount * subtotal) / 100);
+                        $("#grandTotal").val(grandTotal);
+
+                        grandTotalPrice = grandTotal - deductAmmount;
+                        $("#grandTotalPrice").val(grandTotalPrice);
+                        $("#dueAmmount").val(grandTotalPrice);
+                    } else {
+                        grandTotal = subtotal - ((discount * subtotal) / 100);
+                        $("#grandTotal").val(grandTotal);
+
+                        $("#grandTotalPrice").val(grandTotal);
+                        $("#dueAmmount").val(grandTotal);
+                    }
+                } else {
+                    if (!IsNullOrEmpty($("#subTotalPrice").val())) {
+                        subtotal = $("#subTotalPrice").val();
+                    }
+                    if (!IsNullOrEmpty($("#deductAmmount").val())) {
+                        deductAmmount = $("#deductAmmount").val();
+
+                        grandTotal = subtotal;
+                        $("#grandTotal").val(grandTotal);
+                        grandTotalPrice = grandTotal - deductAmmount;
+                        $("#grandTotalPrice").val(grandTotalPrice);
+                        $("#dueAmmount").val(grandTotalPrice);
+                    } else {
+                        if (!IsNullOrEmpty($("#subTotalPrice").val())) {
+                            subtotal = $("#subTotalPrice").val();
+                        }
+                        $("#grandTotal").val(subtotal);
+                        $("#grandTotalPrice").val(subtotal);
+                        $("#dueAmmount").val(subtotal);
+                    }
+                }
+            });
+            $("#deductAmmount").keyup(function() {
+
+                if (!IsNullOrEmpty($("#deductAmmount").val())) {
+                    deductAmmount = $("#deductAmmount").val();
+
+                    if (!IsNullOrEmpty($("#grandTotal").val())) {
+                        grandTotal = $("#grandTotal").val();
+                    }
+                    grandTotalPrice = grandTotal - deductAmmount;
+                    $("#grandTotalPrice").val(grandTotalPrice);
+                    $("#dueAmmount").val(grandTotalPrice);
+                } else {
+                    if (!IsNullOrEmpty($("#grandTotal").val())) {
+                        grandTotal = $("#grandTotal").val();
+                    }
+                    $("#grandTotalPrice").val(grandTotal);
+                    $("#dueAmmount").val(grandTotal);
+                }
+
+            });
+            $("#paidAmmount").keyup(function() {
+                if (!IsNullOrEmpty($("#grandTotalPrice").val())) {
+                    grandTotalPrice = $("#grandTotalPrice").val();
+                }
+                if (!IsNullOrEmpty($("#paidAmmount").val())) {
+                    paidAmmount = $("#paidAmmount").val();
+                }
+                dueAmmount = grandTotalPrice - paidAmmount;
+                $("#dueAmmount").val(dueAmmount);
+            });
+
+            function IsNullOrEmpty(data) {
+                if (data === undefined || data === "" || isNaN(data)) {
+                    return true;
+                }
+                return false;
+            }
+        });
+    </script>
+}

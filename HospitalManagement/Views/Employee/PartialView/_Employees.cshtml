@@ -1,0 +1,73 @@
+﻿@using HospitalManagement.Models
+@using PagedList.Mvc
+@model  PagedList.IPagedList<HospitalManagement.Model.Model.Employee>
+
+@*@model HospitalManagement.Models.EmployeeViewModel*@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-striped custom-table">
+                <thead>
+                <tr>
+                    <th>SI</th>
+                    <th>Employee Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Blood Group</th>
+                    <th>Salary</th>
+                    <th>Gender</th>
+                    <th>Join Date</th>
+                    <th>Role Id</th>
+                    <th>Address</th>
+                    <th class="text-right">Action</th>
+                </tr>
+                </thead>
+                @{ int serial = 1;}
+                @foreach (var employee in Model)
+                {
+                    <tbody>
+                    <tr>
+                        <td>@(serial++)</td>
+                        <td>@employee.employeeId</td>
+                        <td><img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle" alt="">@employee.employeeName</td>
+                        <td>@employee.email</td>
+                        <td>@employee.phone</td>
+                        <td>@employee.bloodGroup</td>
+                        <td>@employee.salary</td>
+                        <td>@employee.gender</td>
+                        <td>@employee.joinDate</td>
+                        <td>@employee.RoleId</td>
+                        <td>@employee.address</td>
+
+                        <td class="text-right">
+                            <div class="dropdown dropdown-action">
+                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-item">@Html.ActionLink("Edit", "Edit", new {id = employee.id})</div>
+                                    <div class="dropdown-item">@Html.ActionLink("Delete", "Delete", new {id = employee.id})</div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                }
+            </table>
+            <div class="m-t-20 text-center">
+                <input class="btn btn-primary submit-btn" type="button" value="Logout" id="Logout"/>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-2" style="padding: 4px;color:black">
+
+                @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+
+                    of @Model.PageCount*@   @Html.PagedListPager(Model, page => Url.Action("ShowEmployees", new { page }))
+
+            </div>
+        </div>
+    </div>
+</div>
+

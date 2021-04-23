@@ -1,0 +1,11 @@
+F:\Softify Digital\HospitalManagement\HospitalManagement.Model\bin\Debug\HospitalManagement.Model.dll
+F:\Softify Digital\HospitalManagement\HospitalManagement.Model\bin\Debug\HospitalManagement.Model.pdb
+F:\Softify Digital\HospitalManagement\HospitalManagement.Model\obj\Debug\HospitalManagement.Model.dll
+F:\Softify Digital\HospitalManagement\HospitalManagement.Model\obj\Debug\HospitalManagement.Model.pdb
+F:\Softify Digital\HospitalManagement\HospitalManagement.Model\obj\Debug\HospitalManagement.Model.csprojResolveAssemblyReference.cache
+E:\My Projects\HospitalManagement\HospitalManagement\HospitalManagement.Model\bin\Debug\HospitalManagement.Model.dll
+E:\My Projects\HospitalManagement\HospitalManagement\HospitalManagement.Model\bin\Debug\HospitalManagement.Model.pdb
+E:\My Projects\HospitalManagement\HospitalManagement\HospitalManagement.Model\obj\Debug\HospitalManagement.Model.csprojAssemblyReference.cache
+E:\My Projects\HospitalManagement\HospitalManagement\HospitalManagement.Model\obj\Debug\HospitalManagement.Model.csproj.CoreCompileInputs.cache
+E:\My Projects\HospitalManagement\HospitalManagement\HospitalManagement.Model\obj\Debug\HospitalManagement.Model.dll
+E:\My Projects\HospitalManagement\HospitalManagement\HospitalManagement.Model\obj\Debug\HospitalManagement.Model.pdb

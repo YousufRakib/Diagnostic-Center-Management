@@ -1,0 +1,123 @@
+﻿@model HospitalManagement.Models.EmployeeViewModel
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+<div class="page-wrapper">
+    @using (Html.BeginForm())
+    {
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h4 class="page-title">Add Employee</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <form>
+                        <div class="row">
+                            @Html.HiddenFor(model => model.id)
+                            <div class="col-sm-6">
+                                <label>Employee Id</label>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(c => c.employeeId, Model.employeeId, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(c => c.employeeId)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Full Name</label>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(c => c.employeeName, Model.employeeName, new {@class = "form-control"})
+                                    @Html.ValidationMessageFor(c => c.employeeName)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Email</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="email" name="email" value="@Model.email" />
+                                    @Html.ValidationMessageFor(c => c.email)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Phone</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="number" name="phone" value="@Model.phone"/>
+                                    @Html.ValidationMessageFor(c => c.phone)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Blood Group</label>
+                                <div class="form-group">
+                                    @Html.DropDownList("bloodGroup", new List<SelectListItem>
+                                    {
+                                        new SelectListItem {Text = "A+", Value = "A+"},
+                                        new SelectListItem {Text = "B+", Value = "B+"},
+                                        new SelectListItem {Text = "AB+", Value = "AB+"},
+                                        new SelectListItem {Text = "AB-", Value = "AB-"},
+                                        new SelectListItem {Text = "O+", Value = "O+"},
+                                        new SelectListItem {Text = "B-", Value = "B-"},
+                                    }, "--- Select Blood Group---")
+                                    @Html.ValidationMessageFor(c => c.bloodGroup)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Gender</label>
+                                <div class="form-group">
+                                    @Html.DropDownList("gender", new List<SelectListItem>
+                                    {
+                                        new SelectListItem {Text = "Male", Value = "Male"},
+                                        new SelectListItem {Text = "Female", Value = "Female"}
+                                    }, "--- Select Gender---")
+                                    @Html.ValidationMessageFor(c => c.gender)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Salary</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="number" name="salary" value="@Model.salary" />
+                                    @Html.ValidationMessageFor(c => c.phone)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Join Date</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="date" name="joinDate" value="@Model.joinDate" />
+                                    @Html.ValidationMessageFor(c => c.joinDate)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="address" value="@Model.address"/>
+                                        @Html.ValidationMessageFor(c => c.address)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Employee Role</label>
+                                <div class="form-group">
+                                    @Html.DropDownListFor(c => c.RoleId, Model.RoleSelectListItems, "--Select Role--")
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-t-20 text-center">
+                            <input class="btn btn-primary submit-btn" type="submit" value="Save" />
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group form-focus">
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h3>
+                                        <b>
+                                            @ViewBag.Message;
+                                        </b>
+                                    </h3>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

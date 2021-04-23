@@ -1,0 +1,79 @@
+﻿@model HospitalManagement.Model.Model.Expense
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    @using (Html.BeginForm())
+    {
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h4 class="page-title">Update Expense</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <form>
+                        @Html.HiddenFor(model => model.id)
+                        @Html.HiddenFor(model => model.status)
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Item Name</label>
+                                    @Html.EditorFor(model => model.itemName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(c => c.itemName)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Purchase From</label>
+                                    @Html.EditorFor(model => model.purchaseFrom, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(c => c.purchaseFrom)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Purchase Date</label>
+                                    <div class="cal-icon">
+                                        @Html.EditorFor(c => c.purchaseDate, Model.purchaseDate.ToString(), new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(c => c.purchaseDate)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    @Html.EditorFor(c => c.amount, Model.amount.ToString(), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(c => c.amount)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-t-20 text-center">
+                            <input class="btn btn-primary submit-btn" type="submit" value="Create Expense" />
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group form-focus">
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h3>
+                                        <b>
+                                            @ViewBag.Message;
+                                        </b>
+                                    </h3>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

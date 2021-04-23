@@ -1,0 +1,62 @@
+﻿@model HospitalManagement.Models.DepartmentViewModel
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    @using (Html.BeginForm())
+    {
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h4 class="page-title">Add Department</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <form>
+                        @Html.HiddenFor(model => model.id)
+                        <div class="form-group">
+                            <label>Department Name</label>
+                            @Html.TextBoxFor(c => c.departmentName, Model.departmentName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.departmentName)
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>@Html.TextBoxFor(c => c.description, Model.description, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label class="display-block">Department Status</label>
+                            <div class="form-check form-check-inline">
+                                @Html.RadioButton("status","Active", new { @class = "form-check-input" })
+                                <label class="form-check-label" for="product_active">
+                                    Active
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                @Html.RadioButton("status", "Inactive", new { @class = "form-check-input" })
+                                <label class="form-check-label" for="product_inactive">
+                                    Inactive
+                                </label>
+                            </div>
+                        </div>
+                        <div class="m-t-20 text-center">
+                            <input class="btn btn-primary submit-btn" type="submit" value="Save" />
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group form-focus">
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h3>
+                                        <b>
+                                            @ViewBag.Message;
+                                        </b>
+                                    </h3>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

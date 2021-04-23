@@ -1,0 +1,66 @@
+﻿@model HospitalManagement.Model.Model.Doctor
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-7 col-6">
+                <h4 class="page-title">Doctor Profile</h4>
+            </div>
+            <div class="col-sm-5 col-6 text-right m-b-30">
+                @*<div class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i>@Html.ActionLink("Edit Profile", "Edit", new { id = Model.id})</div>*@
+                <div class="btn btn-rounded">@Html.ActionLink("Edit Profile", "Edit", new { id = Model.id })</div>
+            </div>
+        </div>
+        <div class="card-box profile-header">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="profile-view">
+                        <div class="profile-img-wrap">
+                            <div class="profile-img">
+                                <a href="#"><img class="avatar" src="~/assets/img/Doctor-Icon.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="profile-basic">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="profile-info-left">
+                                        <h3 class="user-name m-t-0 mb-0">@Html.DisplayFor(model => model.doctorName)</h3>
+                                        <small class="text-muted">@Html.DisplayFor(model => model.designation)</small>
+                                        <div class="staff-id">Reference ID :@Html.DisplayFor(model => model.refId)</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <ul class="personal-info">
+                                        <li>
+                                            <span class="title">Phone:</span>
+                                            <span class="text">@Html.DisplayFor(model => model.phone)</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Doctor Type</span>
+                                            <span class="text">@Html.DisplayFor(model => model.type)</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Doctor Commission</span>
+                                            <span class="text">@Html.DisplayFor(model => model.commission)</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Hospital Name</span>
+                                            <span class="text">@Html.DisplayFor(model => model.hospitalName)</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Gender</span>
+                                            <span class="text">@Html.DisplayFor(model => model.gender)</span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

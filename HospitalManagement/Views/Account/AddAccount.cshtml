@@ -1,0 +1,116 @@
+﻿@model HospitalManagement.Models.AccountViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Patient</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form method="post">
+            <h1>Account Information</h1>
+            <table>
+                <tr>
+                    <td>Employee Name</td>
+                    <td>@Html.DropDownListFor(c=>c.EmployeeId, Model.EmployeeSelectListItems,"--Select Employee--")</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Reason</td>
+                    <td><input type="text" name="reason" value="@Model.reason" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.reason)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td><input type="text" name="type" value="@Model.type" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.type)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td><input type="number" name="amount" value="@Model.amount" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.amount)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td><input type="date" name="date" value="@Model.date" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.date)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Save" /></td>
+                    <td>
+                        @if (ViewBag.Message != null)
+                        {
+                            <h3>
+                                <b>
+                                    @ViewBag.Message;
+                                </b>
+                            </h3>
+                        }
+
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+
+        <table>
+            <tr>
+                <th>SI</th>
+                <th>Employee Name</th>
+                <th>Reason</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+            @{ int serial = 1;}
+            @foreach (var account in Model.Accounts)
+            {
+                <tr>
+                    <td>@(serial++)</td>
+                    <td>@account.EmployeeId</td>
+                    <td>@account.reason</td>
+                    <td>@account.type</td>
+                    <td>@account.date</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = account.id })
+                        @Html.ActionLink("Details", "Details", new { id = account.id })
+                        @Html.ActionLink("Delete", "Delete", new { id = account.id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿@model HospitalManagement.Model.Model.Test
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    @using (Html.BeginForm())
+    {
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h4 class="page-title">Update Test</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <form>
+                        @Html.HiddenFor(model => model.id)
+                        @Html.HiddenFor(model => model.status)
+                        <div class="form-group">
+                            <label>Category Name</label>
+                            @*@Html.DropDownListFor(c => c.CategoryId, Model.CategorySelectListItems, "--Select Category--", new { @class = "form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label>Test Name</label>
+                            @Html.EditorFor(model => model.testName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.testName)
+                        </div>
+                        <div class="form-group">
+                            <label>Unit</label>
+                            @Html.EditorFor(model => model.unit, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.unit)
+                        </div>
+                        <div class="form-group">
+                            <label>Reference Range</label>
+                            @Html.EditorFor(model => model.referenceRange, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.referenceRange)
+                        </div>
+                        <div class="form-group">
+                            <label>Test Price</label>
+                            @Html.EditorFor(model => model.price, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.price)
+                        </div>
+                        <div class="form-group">
+                            <label>Test Room</label>
+                            @Html.EditorFor(model => model.testRoom, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.testRoom)
+                        </div>
+                        <div class="form-group">
+                            <label>Test Delivery Days</label>
+                            @Html.EditorFor(model => model.deliveryDays, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(c => c.deliveryDays)
+                        </div>
+                        <div class="m-t-20 text-center">
+                            <input class="btn btn-primary submit-btn" type="submit" value="Save" />
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group form-focus">
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h3>
+                                        <b>
+                                            @ViewBag.Message;
+                                        </b>
+                                    </h3>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

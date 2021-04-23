@@ -1,0 +1,67 @@
+﻿@model HospitalManagement.Model.Model.Patient
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+<div class="page-wrapper">
+    @using (Html.BeginForm())
+    {
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="page-title">Add Patient</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <form>
+                        <div class="row">
+                            @Html.HiddenFor(model => model.id)
+                            @Html.HiddenFor(model => model.status)
+                            <div class="col-sm-6">
+                                <label class="focus-label">Full Name</label>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.name, new {@class = "form-control floating"})
+                                    @Html.ValidationMessageFor(c => c.name)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="focus-label">Phone</label>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.phone, new { @class = "form-control floating" })
+                                    @Html.ValidationMessageFor(c => c.phone)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="focus-label">Gendar</label>
+                                <div class="form-group form-focus select-focus">
+                                    @Html.EditorFor(model => model.gender, new { @class = "form-control floating" })
+                                    @Html.DropDownList("gender", new List<SelectListItem>
+                                    {
+                                        new SelectListItem {Text = "Male", Value = "Male"},
+                                        new SelectListItem {Text = "Female", Value = "Female"}
+                                    }, "--- Select Gender---")
+                                    @Html.ValidationMessageFor(c => c.gender)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center m-t-20">
+                            <input class="btn btn-primary submit-btn" type="submit" value="Save" />
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group form-focus">
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h3>
+                                        <b>
+                                            @ViewBag.Message;
+                                        </b>
+                                    </h3>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

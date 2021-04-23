@@ -1,0 +1,117 @@
+﻿@model HospitalManagement.Model.Model.Doctor
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+<div class="page-wrapper">
+    @using (Html.BeginForm())
+    {
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="page-title">Edit Profile</h4>
+                </div>
+            </div>
+            <form>
+                <div class="card-box">
+                    <h3 class="card-title">Doctor Informations</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="profile-img-wrap">
+                                <img src="~/assets/img/Doctor-Icon.png" />"" alt="">
+                            </div>
+                            <div class="profile-basic">
+                                <div class="row">
+                                    @Html.HiddenFor(model => model.id)
+                                    @Html.HiddenFor(model => model.status)
+                                    
+                                    <div class="col-md-4">
+                                        <label class="focus-label">Full Name</label>
+                                        <div class="form-group form-focus">
+                                            @Html.EditorFor(model => model.doctorName, new {@class = "form-control floating"})
+                                            @Html.ValidationMessageFor(c => c.doctorName)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="focus-label">Designation</label>
+                                        <div class="form-group form-focus">
+                                            @Html.EditorFor(model => model.designation, new { @class = "form-control floating" })
+                                            @Html.ValidationMessageFor(c => c.designation)
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="focus-label">Hospital Name</label>
+                                        <div class="form-group form-focus">
+                                            @Html.EditorFor(model => model.hospitalName, new { @class = "form-control floating" })
+                                            @Html.ValidationMessageFor(c => c.hospitalName)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="focus-label">Reference Id</label>
+                                        <div class="form-group form-focus">
+                                            @Html.EditorFor(model => model.refId, new { @class = "form-control floating" })
+                                            @Html.ValidationMessageFor(c => c.refId)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="focus-label">Phone</label>
+                                        <div class="form-group form-focus">
+                                            @Html.EditorFor(model => model.phone, new { @class = "form-control floating" })
+                                            @Html.ValidationMessageFor(c => c.phone)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="focus-label">Doctor Commission</label>
+                                        <div class="form-group form-focus">
+                                            @Html.EditorFor(model => model.commission, new { @class = "form-control floating" })
+                                            @Html.ValidationMessageFor(c => c.commission)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="focus-label">Gendar</label>
+                                        <div class="form-group form-focus select-focus">
+                                            @*@Html.EditorFor(model => model.gender, new { @class = "form-control floating" })*@
+                                            @Html.DropDownList("Gender", new List<SelectListItem>
+                                            {
+                                                new SelectListItem {Text = "Male", Value = "Male"},
+                                                new SelectListItem {Text = "Female", Value = "Female"}
+                                            }, "--- Select Gender---")
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="focus-label">Doctor Type</label>
+                                        <div class="form-group form-focus select-focus">
+                                            @*@Html.EditorFor(model => model.type, new { @class = "form-control floating" })*@
+                                            @Html.DropDownList("Type", new List<SelectListItem>
+                                            {
+                                                new SelectListItem {Text = "With Commission", Value = "WithCommission"},
+                                                new SelectListItem {Text = "Without Commission", Value = "WithoutCommission"}
+                                            }, "--- Select Type---")
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center m-t-20">
+                    <input class="btn btn-primary submit-btn" type="submit" value="Save" />
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group form-focus">
+                        @if (ViewBag.Message != null)
+                        {
+                            <h3>
+                                <b>
+                                    @ViewBag.Message;
+                                </b>
+                            </h3>
+                        }
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
+    
+
+</div>

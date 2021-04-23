@@ -1,0 +1,49 @@
+﻿@model HospitalManagement.Model.Model.Account
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <style type="text/css">
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Account</h2>
+        <hr />
+        <table>
+            <tr>
+                <td>Employee Name</td>
+                <td>@Html.DisplayFor(model => model.EmployeeId) </td>
+            </tr>
+            <tr>
+                <td>Reason</td>
+                <td>@Html.DisplayFor(model => model.reason)</td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td>@Html.DisplayFor(model => model.type)</td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td>@Html.DisplayFor(model => model.amount)</td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>@Html.DisplayFor(model => model.date) </td>
+            </tr>
+        </table>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "AddAccount")
+    </p>
+</body>
+</html>

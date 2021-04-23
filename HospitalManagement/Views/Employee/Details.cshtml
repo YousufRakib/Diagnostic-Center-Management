@@ -1,0 +1,62 @@
+﻿@model HospitalManagement.Model.Model.Employee
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <style type="text/css">
+        h2{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>  
+    <h2>Employee</h2>  
+    <hr /> 
+    <table>
+        <tr>
+            <td>Employee Name</td>
+            <td>@Html.DisplayFor(model => model.employeeName) </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>@Html.DisplayFor(model => model.email)</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>@Html.DisplayFor(model => model.phone)</td>
+        </tr>
+        <tr>
+            <td>Blood Group</td>
+            <td>@Html.DisplayFor(model => model.bloodGroup) </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>@Html.DisplayFor(model => model.gender) </td>
+        </tr>
+        <tr>
+            <td>Salary</td>
+            <td>@Html.DisplayFor(model => model.salary)</td>
+        </tr>
+        <tr>
+            <td>Join Date</td>
+            <td>@Html.DisplayFor(model => model.joinDate)</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>@Html.DisplayFor(model => model.address) </td>
+        </tr>
+    </table>
+        
+</div>  
+<p>  
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |  
+    @Html.ActionLink("Back to List", "AddEmployee")  
+</p>
+</body>
+</html>

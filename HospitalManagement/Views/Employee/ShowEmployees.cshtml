@@ -1,0 +1,37 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<HospitalManagement.Model.Model.Employee>
+
+@*@model HospitalManagement.Models.EmployeeViewModel*@
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-4 col-3">
+                <h4 class="page-title">Employee</h4>
+            </div>
+            <div class="col-sm-8 col-9 text-right m-b-20">
+                <div class="btn btn-rounded">@Html.ActionLink("Add Employee", "AddEmployee")</div>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            <div class="row filter-row">
+                @*<div class="col-md-5">
+                    <div class="form-group form-focus">
+                        <label class="focus-label">Employee Name</label>
+                        @Html.TextBoxFor(c => c.employeeName, Model.employeeName, new {@class = "form-control floating"})
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <input class="btn btn-success btn-block" name="search" type="submit" value="Search" />
+                </div>*@
+            </div>
+        }
+        @{
+            Html.RenderPartial("~/Views/Employee/PartialView/_Employees.cshtml", Model);
+        }
+    </div>
+</div>

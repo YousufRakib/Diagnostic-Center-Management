@@ -1,0 +1,113 @@
+﻿@model HospitalManagement.Model.Model.Role
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    @using (Html.BeginForm())
+    {
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h4 class="page-title">Delete/Inactive Role</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <form>
+                        @Html.HiddenFor(model => model.id)
+                        @Html.HiddenFor(model => model.roleName)
+                        <div class="m-t-20 text-center">
+                            <h3>Are you sure want to inactive/delete this role?</h3>
+                            <input class="btn btn-primary submit-btn" type="submit" value="Save"/>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group form-focus">
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h3>
+                                        <b>
+                                            @ViewBag.Message;
+                                        </b>
+                                    </h3>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                    <div>
+                        @Html.ActionLink("Back", "ShowRoles")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model HospitalManagement.Model.Model.Role
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-7 col-6">
+                <h4 class="page-title">Role</h4>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            <form>
+                @Html.AntiForgeryToken()
+                <div class="card-box profile-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="profile-view">
+                                <div class="profile-basic">
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <ul class="personal-info">
+                                                <li>
+                                                    <span class="title">Category Name:</span>
+                                                    <span class="text">@Html.DisplayFor(model => model.roleName)</span>
+                                                </li>
+                                                <li>
+                                                    <h3>Are you sure want to delete this Patient?</h3>
+                                                    <input type="submit" value="Delete" />
+                                                </li>
+                                                <li>
+                                                    @if (ViewBag.Message != null)
+                                                    {
+                                                        <h3>
+                                                            <b>
+                                                                @ViewBag.Message;
+                                                            </b>
+                                                        </h3>
+                                                    }
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div>
+                @Html.ActionLink("Back", "ShowRoles")
+            </div>
+        }
+    </div>
+</div>*@

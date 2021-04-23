@@ -1,0 +1,139 @@
+﻿@model HospitalManagement.Model.Model.Doctor
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    @using (Html.BeginForm())
+    {
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h4 class="page-title">Delete/Inactive Doctor</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <form>
+                        @Html.HiddenFor(model => model.id)
+                        @Html.HiddenFor(model => model.doctorName)
+                        @Html.HiddenFor(model => model.phone)
+                        @Html.HiddenFor(model => model.designation)
+                        @Html.HiddenFor(model => model.hospitalName)
+                        @Html.HiddenFor(model => model.refId)
+                        @Html.HiddenFor(model => model.gender)
+                        @Html.HiddenFor(model => model.type)                       
+                        @Html.HiddenFor(model => model.commission)
+                        @Html.HiddenFor(model => model.info)
+                        <div class="m-t-20 text-center">
+                            <h3>Are you sure want to inactive/delete this role?</h3>
+                            <input class="btn btn-primary submit-btn" type="submit" value="Save" />
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group form-focus">
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h3>
+                                        <b>
+                                            @ViewBag.Message;
+                                        </b>
+                                    </h3>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                    <div>
+                        @Html.ActionLink("Back", "ShowDoctors")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+@*@model HospitalManagement.Model.Model.Doctor
+@{
+    Layout = "~/Views/Master View/_Layout.cshtml";
+}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-7 col-6">
+                <h4 class="page-title">Doctor Profile</h4>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            <form>
+                @Html.AntiForgeryToken()
+                <div class="card-box profile-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="profile-view">
+                                <div class="profile-basic">
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <ul class="personal-info">
+                                                <li>
+                                                    <span class="title">Doctor Name:</span>
+                                                    <span class="text">@Html.DisplayFor(model => model.doctorName)</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Designation:</span>
+                                                    <span class="text">@Html.DisplayFor(model => model.designation)</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Reference Id:</span>
+                                                    <span class="text">@Html.DisplayFor(model => model.refId)</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Email:</span>
+                                                    <span class="text">@Html.DisplayFor(model => model.email)</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Hospital Name</span>
+                                                    <span class="text">@Html.DisplayFor(model => model.hospitalName)</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Gender:</span>
+                                                    <span class="text">@Html.DisplayFor(model => model.gender)</span>
+                                                </li>
+                                                <li>
+                                                    <h3>Are you sure want to delete this Doctor?</h3>
+                                                    <input type="submit" value="Delete"/>
+                                                </li>
+                                                <li>
+                                                    @if (ViewBag.Message != null)
+                                                    {
+                                                        <h3>
+                                                            <b>
+                                                                @ViewBag.Message;
+                                                            </b>
+                                                        </h3>
+                                                    }
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div>
+                @Html.ActionLink("Back", "ShowDoctors")
+            </div>
+        }
+    </div>
+</div>*@

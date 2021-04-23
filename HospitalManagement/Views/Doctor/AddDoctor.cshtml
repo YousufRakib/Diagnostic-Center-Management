@@ -1,0 +1,184 @@
+﻿@model HospitalManagement.Models.DoctorViewModel
+@{
+    Layout ="~/Views/Master View/_Layout.cshtml";
+}
+<div class="page-wrapper" style="min-height: 371px;width: 1050px;margin-left: 255px;">
+    @using (Html.BeginForm())
+    {
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="page-title">Add Doctor</h4>
+                </div>
+            </div>
+            <div class="card-box" style="padding-left: 50px">
+                <h3 class="card-title" style="margin-left: -25px">Doctor Informations</h3>
+                <div class="panel panel-default" style="padding: 1px; margin:1px; margin-left:-40px;">
+                    <div class="container-fluid">
+                        <div class="panel-group">
+                            <div class="row">
+                                @Html.HiddenFor(model => model.id)
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Full Name :</label>
+                                        </div>
+                                        <div class="col-md-8" style="height: 45px; border-radius: 20px;">
+                                            @Html.TextBoxFor(c => c.doctorName, Model.doctorName, new { @class = "form-control", style = "border-radius: 5px;" })
+                                            @Html.ValidationMessageFor(c => c.doctorName)
+                                            @*<input class="form-control" id="buyer" name="Buyer"/>*@
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Designation :</label>
+                                        </div>
+                                        <div class="col-md-8" style="height: 45px">
+                                            @Html.TextBoxFor(c => c.designation, Model.designation, new { @class = "form-control floating", style = "border-radius: 5px;" })
+                                            @Html.ValidationMessageFor(c => c.designation)
+                                            @*<input class="form-control" id="stylecatagory" name="Style"/>*@
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Hospital Name :</label>
+                                        </div>
+                                        <div class="col-md-8" style="height: 45px">
+                                            @Html.TextBoxFor(c => c.hospitalName, Model.hospitalName, new { @class = "form-control floating", style = "border-radius: 5px;" })
+                                            @Html.ValidationMessageFor(c => c.hospitalName)
+                                            @*<input class="form-control k-textbox" id="stylename" name="StyleName"/>*@
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Reference Id:</label>
+                                        </div>
+                                        <div class="col-md-8" style="height: 45px">
+                                            @Html.TextBoxFor(c => c.refId, Model.refId.ToString(), new { @class = "form-control floating", style = "border-radius: 5px;" })
+                                            @Html.ValidationMessageFor(c => c.refId)
+                                            @*<input class="form-control k-textbox" type="text" placeholder="Input Style Number" id="stylenumber"/>*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Phone:</label>
+                                        </div>
+                                        <div class="col-md-8" style="height: 45px">
+                                            @Html.TextBoxFor(c => c.phone, Model.phone.ToString(), new { @class = "form-control floating", style = "border-radius: 5px;" })
+                                            @Html.ValidationMessageFor(c => c.phone)
+                                            @*<input class="form-control k-textbox" type="text" placeholder="Input Style Number" id="stylenumber"/>*@
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Gender:</label>
+                                        </div>
+                                        <div class="col-md-8 form-group form-focus select-focus" style="height: 23px">
+                                            @Html.DropDownList("gender", new List<SelectListItem>
+                                            {
+                                                new SelectListItem {Text = "Male", Value = "Male"},
+                                                new SelectListItem {Text = "Female", Value = "Female"}
+                                            }, "--- Select Gender---", new { style = "width: 310px; border-radius: 5px; height:40px" })
+                                            @Html.ValidationMessageFor(c => c.gender)
+                                            @*<input class="form-control k-textbox" type="text" placeholder="Input Style Number" id="stylenumber"/>*@
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Doctor Type:</label>
+                                        </div>
+                                        <div class="col-md-8 form-group form-focus select-focus" style="height: 45px">
+                                            @Html.DropDownList("type", new List<SelectListItem>
+                                            {
+                                                new SelectListItem {Text = "With Commission", Value = "WithCommission"},
+                                                new SelectListItem {Text = "Without Commission", Value = "WithoutCommission"}
+                                            }, "--- Select Type---", new { style = "width: 310px; border-radius: 5px; height:40px" })
+                                            @Html.ValidationMessageFor(c => c.type)
+                                            @*<input class="form-control k-textbox" type="text" placeholder="Input Style Number" id="stylenumber"/>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 30px;">
+                                <div class="col-md-6">
+                                    <label class="focus-label">Test Name</label>
+                                    <div class="form-group form-focus" style="height: 40px">
+                                        @Html.DropDownListFor(c => c.TestId, Model.TestSelectListItems, "--Select Test--", new {@class = "form-control", id = "TestId", style = "border-radius: 5px;" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="focus-label">Test Commission</label>
+                                    <div class="form-group form-focus" style="height: 40px">
+                                        <input type="number" id="testCommission" class="form-control", style = "border-radius: 5px;"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-focus">
+                                        <input type="button" id="addButton" value="Add" class="btn btn-primary submit-btn"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <table class="table table-bordered table-striped table-hover table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Test Id</th>
+                                    <th>Test Commission</th>
+                                </tr>
+
+                                </thead>
+                                <tbody id="tbDoctors">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center m-t-20">
+                    <input class="btn btn-primary submit-btn" type="submit" value="Save" />
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group form-focus">
+                        @if (ViewBag.Message != null)
+                        {
+                            <h3>
+                                <b>
+                                    @ViewBag.Message;
+                                </b>
+                            </h3>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section MyScript{
+    <script>
+            var index = 0;
+            $("#addButton").click(function () {
+                var doctor = GetDoctorTestCommission();
+                var doctorRow = GetDoctorRow(doctor);
+                $("#tbDoctors").append(doctorRow);
+                index++;
+
+            });
+
+            function GetDoctorTestCommission() {
+
+                var TestId = $("#TestId").val();
+                console.log(TestId);
+                var testCommission = $("#testCommission").val();
+
+                return {TestId: TestId, testCommission: testCommission}
+            }
+
+            function GetDoctorRow(doctor) {
+                var testIdHidden = "<input type='hidden' name='Doctors[" + index + "].TestId' value='" + doctor.TestId + "' />";
+                var testCommissionHidden = "<input type='hidden' name='Doctors[" + index + "].testCommission' value='" + doctor.testCommission + "' />";
+                var tr = "<tr>";
+                var testIdCell = "<td>" + testIdHidden + doctor.TestId + "</td>";
+                var testCommissionCell = "<td>" + testCommissionHidden + doctor.testCommission + "</td>";
+                var endTr = "</tr>";
+
+                var row = tr + testIdCell + testCommissionCell +  endTr;
+
+                //Return row
+                return row;
+            }
+    </script>
+}

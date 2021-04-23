@@ -1,0 +1,75 @@
+﻿@model HospitalManagement.Model.Model.Account
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <style type="text/css">
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+
+            <div class="form-horizontal">
+                <h4>Update Patient Information</h4>
+                <hr />
+
+                @Html.HiddenFor(model => model.id)
+                @Html.HiddenFor(model => model.status)
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td>@Html.DisplayFor(model => model.EmployeeId) </td>
+                    </tr>
+                    <tr>
+                        <td>Reason</td>
+                        <td>@Html.EditorFor(model => model.reason)</td>
+                        <td>@Html.ValidationMessageFor(c => c.reason)</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>@Html.EditorFor(model => model.type)</td>
+                    </tr>
+                    <tr>
+                        <td>Amount</td>
+                        <td>@Html.EditorFor(model => model.amount)</td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>@Html.EditorFor(model => model.date)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Save" /></td>
+                        <td>
+                            @if (ViewBag.Message != null)
+                            {
+                                <h3>
+                                    <b>
+                                        @ViewBag.Message;
+                                    </b>
+                                </h3>
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "AddAccount")
+        </div>
+    </div>
+
+</body>
+</html>
